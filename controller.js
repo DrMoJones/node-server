@@ -1,5 +1,10 @@
 const helpers = require("./helpers");
 const logger = require("./loggers");
+const api = {};
+
+api["/api/duck"] = require("./api/duck");
+api["/api/cat"] = require("./api/cat");
+api["/api/cat/:id"] = require("./api/cat");
 
 module.exports = function(req, res){
    //const url = req.url;
@@ -17,7 +22,23 @@ module.exports = function(req, res){
         return;
     }
 
-    console.log(result);
+    //Hvis jeg er her, er der ikke fundet en match
+    const apiRX = /^(\/api\/\w+)(\/\w+)?$/;
+    result = endpoint.match(apiRX);
+    //console.log(result);
+
+    if (result) {
+        //Hvis jeg er her, er der fundet en match
+        if (api[result[1]]) {
+            if (api[result[1]][req.method]) {
+                //Hvis jeg er her, er der fundet en metode, der matcher req.method
+                api[result[1]][req.method].handler(req, res, result[2]);
+                return;
+            }
+            helpers.send(req, res, {message: `Resource '${endpoint}' not avaiable`}, 404)
+            return;
+        }
+    }
 
    /*
    if(endpoint === "/index.html"){
