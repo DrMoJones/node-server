@@ -1,0 +1,25 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "server.js",
+  "dependencies": {
+
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrMoJones/node-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DrMoJones/node-server/issues"
+  },
+  "homepage": "https://github.com/DrMoJones/node-server#readme"
+}
