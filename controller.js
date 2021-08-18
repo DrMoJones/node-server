@@ -28,7 +28,7 @@ module.exports = function(req, res){
     //console.log(result);
 
     if (result) {
-        //Hvis jeg er her, er der fundet en match
+        //Hvis jeg er her, er der fundet en match 
         if (api[result[1]]) {
             if (api[result[1]][req.method]) {
                 //Hvis jeg er her, er der fundet en metode, der matcher req.method
