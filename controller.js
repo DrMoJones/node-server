@@ -9,7 +9,7 @@ api["/api/cat/:id"] = require("./api/cat");
 module.exports = function(req, res){
    //const url = req.url;
    
-   logger(req, res);
+   //logger(req, res);
    
    const endpoint = new URL(req.url, "http://localhost:3003").pathname;
    
@@ -39,6 +39,33 @@ module.exports = function(req, res){
             return;
         }
     }
+
+    /* const regEx = /^\/((css|img|js)\/)?[\w-]+\.(html|css|png|jpe?g|gif|tiff|svg|bmp|js)$/i;
+    let result = endpoint.match(regEx);
+
+    if(result){
+        //helpers.sendFile(req, res, "./static/" + result[0])
+        helpers.streamFile(req, res, "./static/" + result[0])
+        return;
+    }
+
+    //Hvis jeg er her, er der ikke fundet en match
+    const apiRX = /^(?<route>\/api\/\w+)(?<params>(\/\w+)*)$/;
+    result = endpoint.match(apiRX);
+    //console.log(result);
+
+    if (api[result.groups.route]) {
+        //Hvis jeg er her, er der fundet en match 
+        if (api[result[1]]) {
+            if (api[result[1]][req.method]) {
+                //Hvis jeg er her, er der fundet en metode, der matcher req.method
+                api[result[1]][req.method].handler(req, res, result[2]);
+                return;
+            }
+            helpers.send(req, res, {message: `Resource '${endpoint}' not avaiable`}, 404)
+            return;
+        }
+    } */
 
    /*
    if(endpoint === "/index.html"){

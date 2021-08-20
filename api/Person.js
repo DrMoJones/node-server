@@ -13,9 +13,17 @@ module.exports = {
         }
     },
 
+    PUT: {
+
+    },
+
     POST: {
         handler: function(req, res){
             send(req, res, {says: "Do you recogize the bodies in the water?", method: req.method})
         }
+    },
+
+    DELETE: {
+
     }
 };
